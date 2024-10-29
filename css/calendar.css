@@ -1,0 +1,97 @@
+.date {
+  background-color: #FBFAFA;
+  padding-top: 125px;
+  padding-bottom: 86px;
+  margin-bottom: 145px;
+}
+
+.calendar-container {
+  text-align: center;
+  margin: 20px;
+  color: #333;
+  margin-bottom: 61px;
+}
+
+.calendar-header h3 {
+  font-size: 27px;
+  font-family: "minion-3-display", serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing : 0rem;
+  margin-top: 35px;
+  margin-bottom: 22px;
+}
+
+.calendar-table {
+  width: 100%;
+  max-width: 331px;
+  border-collapse: collapse;
+  margin: 0 auto;
+  
+}
+
+.calendar-table th, .calendar-table td {
+  width: 33px;
+  height: 41px;
+  text-align: center;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.calendar-table thead th {
+  color: #999;
+  font-family: sandoll-jebi2, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.calendar-table tbody td {
+  color: #333;
+  position: relative;
+  font-size: 17px;
+  font-family: minion-pro-subhead, serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.calendar-table tbody .highlight {
+  border-radius: 50%;
+  border: 0.5px solid #333;
+  color: blue;
+  width: 33px;
+  height: 33px;
+  line-height: 33px;
+  display: inline-block;
+  text-align: center;
+}
+
+
+.calendar-table tbody .sunday {
+  color: red; /* Change the color for Sundays */
+}
+
+.calendar-table tbody .saturday {
+  color: blue; /* Change the color for Saturdays */
+}
+
+.date-info {
+  text-align: center;
+}
+
+.date .date-info h4 {
+  font-size: 13px;
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.15em;
+  margin-bottom: 15px;
+  margin-top: 43px;
+}
+.date .date-info p {
+  font-size: 19.5px;
+  font-family: sandoll-jebi2, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
