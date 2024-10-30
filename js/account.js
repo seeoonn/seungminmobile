@@ -53,10 +53,6 @@ function shareKakao() {
 }
 
 
-function shareKakao() {
-  alert("KakaoTalk sharing function goes here.");
-}
-
 function copyAddress() {
   const address = "https://taehui-seungmin.life"; // Replace with actual address
   navigator.clipboard.writeText(address).then(() => {
