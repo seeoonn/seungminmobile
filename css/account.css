@@ -111,6 +111,7 @@ h4 {
   font-family: Pretendard;
   font-weight: 300;
   font-size: 12px;
+  color: #000;
 }
 
 .border {
@@ -136,6 +137,7 @@ h4 {
   background-color: #FBFAFA !important;
   cursor: pointer;
   margin-top: 50px;
+  color: #000;
 }
 
 button:hover {
