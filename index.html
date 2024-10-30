@@ -199,26 +199,26 @@
     <section class="gallery">
       <h2>GALLERY</h2>
       <div class="photo-grid">
-        <img src="./images/image1.jpg" alt="Image 1" class="photo" onclick="openPopup(0)">
-        <img src="./images/image2.jpg" alt="Image 2" class="photo" onclick="openPopup(1)">
-        <img src="./images/image3.jpg" alt="Image 3" class="photo" onclick="openPopup(2)">
-        <img src="./images/image4.jpg" alt="Image 4" class="photo" onclick="openPopup(3)">
-        <img src="./images/image5.jpg" alt="Image 5" class="photo" onclick="openPopup(4)">
-        <img src="./images/image6.jpg" alt="Image 6" class="photo" onclick="openPopup(5)">
-        <img src="./images/image7.jpg" alt="Image 7" class="photo" onclick="openPopup(6)">
-        <img src="./images/image8.jpg" alt="Image 8" class="photo" onclick="openPopup(7)">
-        <img src="./images/image9.jpg" alt="Image 9" class="photo" onclick="openPopup(8)">
+        <img src="./images/image1.jpg" alt="Image 1" class="photo">
+        <img src="./images/image2.jpg" alt="Image 2" class="photo">
+        <img src="./images/image3.jpg" alt="Image 3" class="photo">
+        <img src="./images/image4.jpg" alt="Image 4" class="photo">
+        <img src="./images/image5.jpg" alt="Image 5" class="photo">
+        <img src="./images/image6.jpg" alt="Image 6" class="photo">
+        <img src="./images/image7.jpg" alt="Image 7" class="photo">
+        <img src="./images/image8.jpg" alt="Image 8" class="photo">
+        <img src="./images/image9.jpg" alt="Image 9" class="photo">
       </div>
     </section>
-
-    <!-- Popup container for all 14 images -->
+    
+    <!-- Popup container -->
     <div id="popup" class="popup">
       <span class="close" onclick="closePopup()">&times;</span>
       <span class="prev" onclick="prevImage()">&#10094;</span>
       <span class="next" onclick="nextImage()">&#10095;</span>
       <img class="popup-content" id="popup-img">
     </div>
-
+    
 
 
     <section class="location">
@@ -310,8 +310,8 @@
       </div>
 
       <div class="button-container">
-        <button onclick="shareKakao()">카카오톡 공유하기</button>
-        <button onclick="copyAddress()">청첩장 주소복사</button>
+        <button class="share-button" onclick="shareKakao()">카카오톡 공유하기</button>
+        <button class="share-button" onclick="copyAddress()">청첩장 주소복사</button>
       </div>
 
       <div class="footer-text">by BLISUN</div>
