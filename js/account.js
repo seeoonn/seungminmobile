@@ -26,7 +26,31 @@ function copyAccount(accountNumber) {
 
 
 
+Kakao.init('b7c9a8a5782e51858aa5c8ea6c5d146f');
 
+function shareKakao() {
+  Kakao.Link.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '태희 승민 결혼식에 초대드립니다🤍',
+      description: '2025년 1월 11일 토요일',
+      imageUrl: 'https://ifh.cc/g/rKkjhh.jpg',
+      link: {
+        mobileWebUrl: 'https://taehui-seungmin.life',
+        webUrl: 'https://taehui-seungmin.life'
+      }
+    },
+    buttons: [
+      {
+        title: '모바일 청첩장 보기',
+        link: {
+          mobileWebUrl: 'https://taehui-seungmin.life',
+          webUrl: 'https://taehui-seungmin.life'
+        }
+      }
+    ]
+  });
+}
 
 
 function shareKakao() {
@@ -34,7 +58,7 @@ function shareKakao() {
 }
 
 function copyAddress() {
-  const address = "http://127.0.0.1:5500/index.html"; // Replace with actual address
+  const address = "https://taehui-seungmin.life"; // Replace with actual address
   navigator.clipboard.writeText(address).then(() => {
       alert("주소를 복사했어요!");
   });
