@@ -33,7 +33,7 @@ function shareKakao() {
     objectType: 'feed',
     content: {
       title: '태희 승민 결혼식에 초대드립니다🤍',
-      description: '2025년 1월 11일 토요일',
+      description: '2025년 1월 11일 (토) 오후 12시 30분\n 더 리움 웨딩 라루체홀 ',
       imageUrl: 'https://ifh.cc/g/rKkjhh.jpg',
       link: {
         mobileWebUrl: 'https://taehui-seungmin.life',
