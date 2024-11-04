@@ -24,8 +24,11 @@ function nextImage() {
   popupImg.src = allImages[currentIndex];
 }
 
-// Add event listeners to visible imagesdocument.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
-  img.addEventListener('click', () => openPopup(index));
+document.addEventListener("DOMContentLoaded", () => {
+  // Add event listeners to visible images
+  document.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
+    img.addEventListener('click', () => openPopup(index));
+  });
 });
 
 // Close popup when clicking outside the image
