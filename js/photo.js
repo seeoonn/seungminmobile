@@ -37,27 +37,58 @@ function closePopup() {
 function prevImage() {
   currentIndex = (currentIndex === 0) ? allImages.length - 1 : currentIndex - 1;
   popupImg.src = allImages[currentIndex];
-  popupImg.style.transform = 'translateX(0)';
 }
 
 // Function to show next image
 function nextImage() {
   currentIndex = (currentIndex === allImages.length - 1) ? 0 : currentIndex + 1;
   popupImg.src = allImages[currentIndex];
-  popupImg.style.transform = 'translateX(0)';
 }
 
 // Add event listeners to images in the gallery
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
-      img.addEventListener('click', () => {
-          console.log("Image clicked:", index); // Debug log
-          openPopup(index);
-      });
+    img.addEventListener('click', () => {
+      console.log("Image clicked:", index); // Debug log
+      openPopup(index);
+    });
   });
 });
 
 // Close popup when clicking outside the image
 popup.addEventListener('click', (e) => {
-  if (e.target === popup) closePopup();
+  if (e.target === popup) {
+    closePopup();
+  }
+});
+
+// Swipe Gesture Supportlet startX = 0;
+let isSwiping = false;
+
+// Touch start event to get initial touch position
+popup.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isSwiping = true;
+});
+
+// Touch move event to detect swipe distance and direction
+popup.addEventListener("touchmove", (e) => {
+  if (!isSwiping) return;
+
+  const moveX = e.touches[0].clientX;
+  const diff = startX - moveX;
+
+  // Swipe threshold to change to the next or previous image
+  if (diff > 50) {
+    nextImage(); // Swipe left to next image
+    isSwiping = false;
+  } else if (diff < -50) {
+    prevImage(); // Swipe right to previous image
+    isSwiping = false;
+  }
+});
+
+// Reset swipe state after touch ends
+popup.addEventListener("touchend", () => {
+  isSwiping = false;
 });
