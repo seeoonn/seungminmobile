@@ -212,12 +212,12 @@
     
     <!-- Popup container -->
     <div id="popup" class="popup">
-      <span class="close" onclick="closePopup()">&times;</span>
-      <span class="prev" onclick="prevImage()">&#10094;</span>
-      <span class="next" onclick="nextImage()">&#10095;</span>
-      <img class="popup-content" id="popup-img">
-    </div>
-    
+      <div id="popup-img-container" class="popup-img-container">
+          <img id="popup-img-3" class="popup-img" alt="Previous Image"> <!-- Previous Image -->
+          <img id="popup-img-1" class="popup-img" alt="Current Image"> <!-- Current Image -->
+          <img id="popup-img-2" class="popup-img" alt="Next Image"> <!-- Next Image -->
+      </div>
+      <span class="close" onclick="closePopup()">&times;</span></div>
 
 
     <section class="location">
