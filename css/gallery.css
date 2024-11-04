@@ -53,6 +53,10 @@ body {
   justify-content: center;
 }
 
+.popup.show {
+  display: flex !important; /* Display popup when the show class is added */
+}
+
 .popup-content {
   max-width: 80%;
   max-height: 80%;
