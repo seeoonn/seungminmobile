@@ -19,38 +19,46 @@ let currentIndex = 0;
 const popup = document.getElementById('popup');
 const popupImg = document.getElementById('popup-img');
 
-function openPopup(index) {
+// Function to open popup with selected imagefunction openPopup(index) 
+{
+  console.log("Opening popup for index:", index); // Debug log
   currentIndex = index;
-  popup.style.display = 'flex';
-  popupImg.src = allImages[currentIndex];
-}
+  popup.classList.add('show'); // Add the show class to display the popup
+  popupImg.src = allImages[currentIndex];}
 
-function closePopup() {
-  popup.style.display = 'none';
-}
+// Function to close popupfunction closePopup() 
+{
+  console.log("Closing popup"); // Debug log
+  popup.classList.remove('show');}// Remove the show class to hide the popup
 
-function prevImage() {
+// Function to show previous imagefunction prevImage()
+{
   currentIndex = (currentIndex === 0) ? allImages.length - 1 : currentIndex - 1;
-  popupImg.src = allImages[currentIndex];
-}
+  popupImg.src = allImages[currentIndex];}
 
-function nextImage() {
+// Function to show next imagefunction nextImage() 
+{
   currentIndex = (currentIndex === allImages.length - 1) ? 0 : currentIndex + 1;
-  popupImg.src = allImages[currentIndex];
-}
+  popupImg.src = allImages[currentIndex];}
 
-// Add event listeners to visible images
-document.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
-  img.addEventListener('click', () => openPopup(index));
-});
+// Add event listeners to images in the gallerydocument.addEventListener("DOMContentLoaded", () => 
+{
+  document.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
+    img.addEventListener('click', () => {
+      console.log("Image clicked:", index); // Debug log
+      openPopup(index);
+    });
+  });
+};
 
 // Close popup when clicking outside the image
 popup.addEventListener('click', (e) => {
-  if (e.target === popup) closePopup();
+  if (e.target === popup) {
+    closePopup();
+  }
 });
 
-// Swipe Gesture Support
-let startX = 0;
+// Swipe Gesture Supportlet startX = 0;
 let isSwiping = false;
 
 // Touch start event to get initial touch position
@@ -68,13 +76,11 @@ popup.addEventListener("touchmove", (e) => {
 
   // Swipe threshold to change to the next or previous image
   if (diff > 50) {
-    // Swipe left: show next image
-    nextImage();
-    isSwiping = false; // Disable further swiping until touchend
+    nextImage(); // Swipe left to next image
+    isSwiping = false;
   } else if (diff < -50) {
-    // Swipe right: show previous image
-    prevImage();
-    isSwiping = false; // Disable further swiping until touchend
+    prevImage(); // Swipe right to previous image
+    isSwiping = false;
   }
 });
 
