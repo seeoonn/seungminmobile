@@ -58,7 +58,8 @@ popup.addEventListener('click', (e) => {
   if (e.target === popup) closePopup();
 });
 
-// Variables to track swipe movementlet startX = 0;
+// Variables to track swipe movement
+let startX = 0;
 let currentX = 0;
 let isSwiping = false;
 
