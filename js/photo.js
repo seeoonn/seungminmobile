@@ -17,21 +17,14 @@ const allImages = [
 
 let currentIndex = 0;
 const popup = document.getElementById('popup');
-const popupImgContainer = document.getElementById('popup-img-container'); // Wrapper for sliding imagesconst popupImg1 = document.getElementById('popup-img-1'); // Current imageconst popupImg2 = document.getElementById('popup-img-2'); // Next imageconst popupImg3 = document.getElementById('popup-img-3'); // Previous image
+const popupImg = document.getElementById('popup-img');
 
-// Function to set images for the current, next, and previous positions
-function setImages() {
-  popupImg1.src = allImages[currentIndex];
-  popupImg2.src = allImages[(currentIndex + 1) % allImages.length];
-  popupImg3.src = allImages[(currentIndex - 1 + allImages.length) % allImages.length];
-}
-
-// Function to open popup with the current image and set up neighbors
+// Function to open popup with selected image
 function openPopup(index) {
   currentIndex = index;
   popup.style.display = 'flex';
-  setImages();
-  popupImgContainer.style.transform = 'translateX(0)'; // Center the container
+  popupImg.src = allImages[currentIndex];
+  popupImg.style.transform = 'translateX(0)'; // Reset image position
 }
 
 // Function to close popup
@@ -39,20 +32,18 @@ function closePopup() {
   popup.style.display = 'none';
 }
 
-// Function to go to the previous image
+// Function to show previous image
 function prevImage() {
   currentIndex = (currentIndex === 0) ? allImages.length - 1 : currentIndex - 1;
-  setImages();
-  popupImgContainer.style.transition = 'transform 0.3s ease';
-  popupImgContainer.style.transform = 'translateX(0)';
+  popupImg.src = allImages[currentIndex];
+  popupImg.style.transform = 'translateX(0)';
 }
 
-// Function to go to the next image
+// Function to show next image
 function nextImage() {
-  currentIndex = (currentIndex + 1) % allImages.length;
-  setImages();
-  popupImgContainer.style.transition = 'transform 0.3s ease';
-  popupImgContainer.style.transform = 'translateX(0)';
+  currentIndex = (currentIndex === allImages.length - 1) ? 0 : currentIndex + 1;
+  popupImg.src = allImages[currentIndex];
+  popupImg.style.transform = 'translateX(0)';
 }
 
 // Add event listeners to images in the gallery
@@ -67,26 +58,27 @@ popup.addEventListener('click', (e) => {
   if (e.target === popup) closePopup();
 });
 
-// Variables to track swipe movementlet startX = 0;
+// Variables to track swipe movement
+let startX = 0;
 let currentX = 0;
 let isSwiping = false;
 
-// Touch start event to get the initial touch position
+// Touch start event to get initial touch position
 popup.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
   isSwiping = true;
-  popupImgContainer.style.transition = 'none'; // Disable transition during drag
+  popupImg.style.transition = 'none'; // Disable transition during drag
 });
 
-// Touch move event to drag the image group with the swipe
+// Touch move event to drag the image with the swipe
 popup.addEventListener("touchmove", (e) => {
   if (!isSwiping) return;
 
   currentX = e.touches[0].clientX;
   const diff = currentX - startX;
   
-  // Move the entire image container with the finger
-  popupImgContainer.style.transform = `translateX(${diff}px)`;
+  // Move the image with the finger
+  popupImg.style.transform = `translateX(${diff}px)`;
 });
 
 // Touch end event to determine if the swipe should change the image
@@ -105,7 +97,7 @@ popup.addEventListener("touchend", () => {
     nextImage();
   } else {
     // If swipe is too small, return to center
-    popupImgContainer.style.transition = 'transform 0.3s ease';
-    popupImgContainer.style.transform = 'translateX(0)';
+    popupImg.style.transition = 'transform 0.3s ease';
+    popupImg.style.transform = 'translateX(0)';
   }
 });

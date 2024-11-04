@@ -53,16 +53,7 @@ body {
   justify-content: center;
 }
 
-.popup-img-container {
-  display: flex;
-  width: 300%; /* Ensures all three images are side-by-side */
-  transition: transform 0.3s ease;
-}
 
-.popup-img {
-  width: 100vw; /* Each image takes up full viewport width */
-  height: auto;
-}
 
 .popup-content {
   max-width: 80%;
