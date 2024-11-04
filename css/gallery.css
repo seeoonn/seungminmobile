@@ -53,6 +53,9 @@ body {
   justify-content: center;
 }
 
+/* Show popup when this class is added */.popup.show {
+  display: flex !important;
+}
 
 .popup-content {
   max-width: 80%;
