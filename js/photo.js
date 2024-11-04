@@ -19,76 +19,84 @@ let currentIndex = 0;
 const popup = document.getElementById('popup');
 const popupImg = document.getElementById('popup-img');
 
-// Function to open popup with selected image
-function openPopup(index) {
-  console.log("Opening popup for index:", index); // Debug log
+// Function to open popup with selected imagefunction openPopup(index) 
+{
   currentIndex = index;
-  popup.classList.add('show'); // Add the show class to display the popup
+  popup.classList.add('show');
   popupImg.src = allImages[currentIndex];
+  popupImg.style.transform = 'translateX(0)'; // Reset image position
 }
 
-// Function to close popup
-function closePopup() {
-  console.log("Closing popup"); // Debug log
-  popup.classList.remove('show'); // Remove the show class to hide the popup
+// Function to close popupfunction closePopup() 
+{
+  popup.classList.remove('show');
 }
 
-// Function to show previous image
-function prevImage() {
+// Function to show previous imagefunction prevImage() 
+{
   currentIndex = (currentIndex === 0) ? allImages.length - 1 : currentIndex - 1;
   popupImg.src = allImages[currentIndex];
+  popupImg.style.transform = 'translateX(0)';
 }
 
-// Function to show next image
-function nextImage() {
+// Function to show next imagefunction nextImage() 
+{
   currentIndex = (currentIndex === allImages.length - 1) ? 0 : currentIndex + 1;
   popupImg.src = allImages[currentIndex];
+  popupImg.style.transform = 'translateX(0)';
 }
 
-// Add event listeners to images in the gallery
-document.addEventListener("DOMContentLoaded", () => {
+// Add event listeners to images in the gallerydocument.addEventListener("DOMContentLoaded", () => 
+{
   document.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
-    img.addEventListener('click', () => {
-      console.log("Image clicked:", index); // Debug log
-      openPopup(index);
-    });
+    img.addEventListener('click', () => openPopup(index));
   });
-});
+};
 
 // Close popup when clicking outside the image
 popup.addEventListener('click', (e) => {
-  if (e.target === popup) {
-    closePopup();
-  }
+  if (e.target === popup) closePopup();
 });
 
-// Swipe Gesture Supportlet startX = 0;
+// Variables to track swipe movementlet startX = 0;
+let currentX = 0;
 let isSwiping = false;
 
 // Touch start event to get initial touch position
 popup.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
   isSwiping = true;
+  popupImg.style.transition = 'none'; // Disable transition during drag
 });
 
-// Touch move event to detect swipe distance and direction
+// Touch move event to drag the image with the swipe
 popup.addEventListener("touchmove", (e) => {
   if (!isSwiping) return;
 
-  const moveX = e.touches[0].clientX;
-  const diff = startX - moveX;
-
-  // Swipe threshold to change to the next or previous image
-  if (diff > 50) {
-    nextImage(); // Swipe left to next image
-    isSwiping = false;
-  } else if (diff < -50) {
-    prevImage(); // Swipe right to previous image
-    isSwiping = false;
-  }
+  currentX = e.touches[0].clientX;
+  const diff = currentX - startX;
+  
+  // Move the image with the finger
+  popupImg.style.transform = `translateX(${diff}px)`;
 });
 
-// Reset swipe state after touch ends
+// Touch end event to determine if the swipe should change the image
 popup.addEventListener("touchend", () => {
   isSwiping = false;
+  const diff = currentX - startX;
+  
+  // Set a swipe threshold
+  const threshold = 100;
+  
+  if (diff > threshold) {
+    // Swipe right: show previous image
+    prevImage();
+  } else if (diff < -threshold) {
+    // Swipe left: show next image
+    nextImage();
+  } else {
+    // If swipe is too small, return to center
+    popupImg.style.transition = 'transform 0.3s ease';
+    popupImg.style.transform = 'translateX(0)';
+  }
 });
