@@ -107,7 +107,7 @@ popup.addEventListener("touchend", () => {
   const diff = currentX - startX;
 
   // Set a swipe threshold to prevent small accidental swipes
-  const threshold = 90;
+  const threshold = 60;
   console.log(`Touch end at position: ${currentX}, diff: ${diff}`);
 
   if (diff > threshold) {
