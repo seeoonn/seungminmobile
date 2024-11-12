@@ -18,7 +18,7 @@ const allImages = [
 let currentIndex = 0;
 const popup = document.getElementById('popup');
 const popupImg = document.getElementById('popup-img');
-let swipeLock = false; // New variable to prevent double triggering
+let swipeLock = false; // Variable to prevent double triggering
 
 // Function to open popup with selected image
 function openPopup(index) {
@@ -26,6 +26,7 @@ function openPopup(index) {
   popup.style.display = 'flex';
   popupImg.src = allImages[currentIndex];
   popupImg.style.transform = 'translateX(0)'; // Reset image position
+  console.log(`Opening popup at index: ${currentIndex}`);
 }
 
 // Function to close popup
@@ -35,26 +36,26 @@ function closePopup() {
 
 // Function to show previous image
 function prevImage() {
-  if (swipeLock) return; // Prevent multiple calls
+  if (swipeLock) return;
   swipeLock = true;
-
   currentIndex = (currentIndex === 0) ? allImages.length - 1 : currentIndex - 1;
   popupImg.src = allImages[currentIndex];
   popupImg.style.transform = 'translateX(0)';
+  console.log(`Previous image at index: ${currentIndex}`);
 
   setTimeout(() => {
     swipeLock = false;
-  }, 300); // Adjust delay to suit swipe speed
+  }, 300); // Adjust delay as necessary
 }
 
 // Function to show next image
 function nextImage() {
-  if (swipeLock) return; // Prevent multiple calls
+  if (swipeLock) return;
   swipeLock = true;
-
   currentIndex = (currentIndex === allImages.length - 1) ? 0 : currentIndex + 1;
   popupImg.src = allImages[currentIndex];
   popupImg.style.transform = 'translateX(0)';
+  console.log(`Next image at index: ${currentIndex}`);
 
   setTimeout(() => {
     swipeLock = false;
@@ -83,6 +84,7 @@ popup.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
   isSwiping = true;
   popupImg.style.transition = 'none'; // Disable transition during drag
+  console.log(`Touch start at position: ${startX}`);
 });
 
 // Touch move event to drag the image with the swipe
@@ -102,6 +104,7 @@ popup.addEventListener("touchend", () => {
 
   // Set a swipe threshold to prevent small accidental swipes
   const threshold = 100;
+  console.log(`Touch end at position: ${currentX}, diff: ${diff}`);
 
   if (diff > threshold) {
     // Swipe right: show previous image
