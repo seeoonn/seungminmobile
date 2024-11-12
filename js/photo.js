@@ -18,6 +18,7 @@ const allImages = [
 let currentIndex = 0;
 const popup = document.getElementById('popup');
 const popupImg = document.getElementById('popup-img');
+let swipeLock = false; // New variable to prevent double triggering
 
 // Function to open popup with selected image
 function openPopup(index) {
@@ -34,16 +35,30 @@ function closePopup() {
 
 // Function to show previous image
 function prevImage() {
+  if (swipeLock) return; // Prevent multiple calls
+  swipeLock = true;
+
   currentIndex = (currentIndex === 0) ? allImages.length - 1 : currentIndex - 1;
   popupImg.src = allImages[currentIndex];
   popupImg.style.transform = 'translateX(0)';
+
+  setTimeout(() => {
+    swipeLock = false;
+  }, 300); // Adjust delay to suit swipe speed
 }
 
 // Function to show next image
 function nextImage() {
+  if (swipeLock) return; // Prevent multiple calls
+  swipeLock = true;
+
   currentIndex = (currentIndex === allImages.length - 1) ? 0 : currentIndex + 1;
   popupImg.src = allImages[currentIndex];
   popupImg.style.transform = 'translateX(0)';
+
+  setTimeout(() => {
+    swipeLock = false;
+  }, 300); // Adjust delay as needed
 }
 
 // Add event listeners to images in the gallery
@@ -73,10 +88,9 @@ popup.addEventListener("touchstart", (e) => {
 // Touch move event to drag the image with the swipe
 popup.addEventListener("touchmove", (e) => {
   if (!isSwiping) return;
-
   currentX = e.touches[0].clientX;
   const diff = currentX - startX;
-  
+
   // Move the image with the finger
   popupImg.style.transform = `translateX(${diff}px)`;
 });
@@ -85,10 +99,10 @@ popup.addEventListener("touchmove", (e) => {
 popup.addEventListener("touchend", () => {
   isSwiping = false;
   const diff = currentX - startX;
-  
-  // Set a swipe threshold
+
+  // Set a swipe threshold to prevent small accidental swipes
   const threshold = 100;
-  
+
   if (diff > threshold) {
     // Swipe right: show previous image
     prevImage();
