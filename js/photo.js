@@ -27,11 +27,15 @@ function openPopup(index) {
   popupImg.src = allImages[currentIndex];
   popupImg.style.transform = 'translateX(0)'; // Reset image position
   console.log(`Opening popup at index: ${currentIndex}`);
+  // Disable background scrolling
+  document.body.classList.add('no-scroll');
 }
 
 // Function to close popup
 function closePopup() {
   popup.style.display = 'none';
+  // Enable background scrolling
+  document.body.classList.remove('no-scroll');
 }
 
 // Function to show previous image
