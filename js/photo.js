@@ -68,7 +68,7 @@ function nextImage() {
 
 // Add event listeners to images in the gallery
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.photo-grid .photo').forEach((img, index) => {
+  document.querySelectorAll('.photo-grid img').forEach((img, index) => {
     img.addEventListener('click', () => openPopup(index));
   });
 });

@@ -7,10 +7,10 @@
   font-weight: 300;
   font-style: normal;
   font-size: 20px;
-  margin-top: 48px;
+  margin-top: 70px;
   margin-bottom: 10px;
 }
-.address-number {
+.address-stair {
   font-size: 21px;
   letter-spacing: 0.03em;
 }
@@ -22,7 +22,7 @@
   color: #595757;
   letter-spacing: -0.03em;
 }
-.phone-number {
+.address-number {
   font-family: sandoll-jebi2, sans-serif;
   font-weight: 500;
   font-style: normal;
@@ -31,8 +31,7 @@
 
 
 .map-container {
-  width: 87%; /* Adjust the width as needed */
-  max-width: 600px; /* Optional: set a maximum width */
+  width: 365px;
   margin: 10px auto; /* Center the map container */
   border: 0px solid #ddd; /* Optional: add a border to the map */
   height: 275px;
@@ -40,36 +39,76 @@
   text-align: center;
   box-shadow: none; /* Ensure no shadow */
   margin-top: 40px;
-  margin-bottom: 75px;
+  margin-bottom: 27px;
 }
-@media (max-width: 768px) {
-  .map-container {
-      width: 90%; /* Adjust for smaller screens */
-  }
-}
+
 
 
 .btn-copy {
-  background-color: #FBFAFA;
-  border-radius: 16px;
-  max-width: 173px;
-  height: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  font-family: sandoll-jebi2, sans-serif;
-  font-weight: 300;
-  font-style: normal; 
-  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 400;
   cursor: pointer;
-  margin-top: 42.5px;
-  margin-bottom: 27px;
-  color: black;
-  margin-left: auto;
-  margin-right: auto;
+  color: #9FA0A0;
+  display: block; 
+  margin: 37px auto 10px auto; 
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+  text-align: center;
+}
+
+.btn-copy::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 5px;
 }
 
 .btn-copy:hover {
-  background-color: #EFE6E6    
+  color: #555;   
+}
+
+
+
+
+.map-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 55px;
+}
+
+.map-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.map-button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+
+
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 80px;
 }

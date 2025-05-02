@@ -1,0 +1,74 @@
+
+/*컨텐츠 영역*/
+
+.contact-contents {
+  margin-top: 70px;
+  margin-bottom: 65px;
+}
+
+.contact-group {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 70px;
+  margin-left: 65px;
+  margin-right: 65px;
+  
+}
+
+.contact-line {
+  border-top: 1px solid #ccc;
+  margin: 40px 40px; /* contact-group 좌우 여백과 일치 */
+}
+
+.contact-label {
+  width: 95px;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.contact-row span {
+  margin-right: auto;
+}
+
+.icon-buttons {
+  display: flex;
+  gap: 10px;
+  margin-right: 13px;
+  
+}
+.icon-circle {
+  width: 31px; /* Circle width */
+  height: 31px; /* Circle height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  background-color: transparent;
+}
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-label {
+  color:#333;
+  font-family: sandoll-jebi2, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 19px;
+}
+
+
+

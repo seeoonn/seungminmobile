@@ -1,0 +1,80 @@
+
+
+.accordion {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.accordion-block {
+  border-top: 1px solid #ccc;
+}
+
+.accordion-title {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1rem 20px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.accordion-title .left {
+
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0.15em; 
+  color: #3E3A39;
+}
+
+.accordion-title .right {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.accordion-title .right span.label {
+  font-size: 16px;
+  font-family: sandoll-jebi2, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  color: #888;
+}
+
+
+
+.arrow {
+  transition: transform 0.005s ease-in-out;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/arrow-icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.accordion-title.active .arrow {
+  transform: rotate(-180deg);
+}
+
+
+.accordion-substance {
+  display: none;
+  padding-bottom: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.accordion-substance.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
